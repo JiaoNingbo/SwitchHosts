@@ -27,8 +27,8 @@ export default async (hosts_id: string): Promise<IOperationResult> => {
     }
   }
 
-  let { type, url } = hosts
-
+  let { type, url, auth_username, auth_password } = hosts
+  console.log("对象信息：" + JSON.stringify(hosts))
   if (type !== 'remote') {
     return {
       success: false,
@@ -50,8 +50,22 @@ export default async (hosts_id: string): Promise<IOperationResult> => {
     if (url.startsWith('file://')) {
       new_content = await fs.promises.readFile(new URL(url), 'utf-8')
     } else {
-      let resp = await GET(url)
-      new_content = resp.data
+      console.log('发起请求')
+      // 如果账号和密码均不为空
+      if (auth_username && auth_password) {
+        console.log('进行验证 user:' + auth_username + ' password:' + auth_password)
+        // 请求的时候添加自定义请求头
+        let myResp = await GET(url, null, {
+          auth: {
+            username: auth_username,
+            password: auth_password
+          }
+        })
+        new_content = myResp.data;
+      } else {
+        let resp = await GET(url);
+        new_content = resp.data
+      }
     }
   } catch (e: any) {
     console.error(e)

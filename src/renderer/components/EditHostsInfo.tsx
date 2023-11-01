@@ -138,6 +138,26 @@ const EditHostsInfo = () => {
             onKeyDown={(e) => e.key === 'Enter' && onSave()}
           />
         </FormControl>
+        <FormControl className={styles.ln}>
+          <FormLabel>{lang.auth_username}</FormLabel>
+          <Input
+              value={hosts?.auth_username || ''}
+              onChange={(e) => onUpdate({ auth_username: e.target.value })}
+              placeholder={lang.auth_username}
+              onKeyDown={(e) => e.key === 'Enter' && onSave()}
+          />
+        </FormControl>
+
+        <FormControl className={styles.ln}>
+          <FormLabel>{lang.auth_password}</FormLabel>
+          <Input
+              value={hosts?.auth_password || ''}
+              type={"password"}
+              onChange={(e) => onUpdate({ auth_password: e.target.value })}
+              placeholder={lang.auth_password}
+              onKeyDown={(e) => e.key === 'Enter' && onSave()}
+          />
+        </FormControl>
 
         <FormControl className={styles.ln}>
           <FormLabel>{lang.auto_refresh}</FormLabel>

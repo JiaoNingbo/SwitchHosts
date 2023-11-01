@@ -171,6 +171,8 @@ const lang: LanguageDict = {
   unhide: 'すべて表示',
   untitled: '無題',
   url_placeholder: 'http:// または https:// または file://',
+  auth_username: 'ユーザー名',
+  auth_password: 'パスワード',
   usage_data_agree: 'はい、匿名の利用データを送信します。',
   usage_data_help: '匿名の利用データを定期的に送信し、SwitchHostsの改善にご協力いただけませんか？',
   usage_data_title: 'SwitchHostsの改善に協力する',

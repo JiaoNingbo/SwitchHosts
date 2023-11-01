@@ -11,6 +11,8 @@ export interface IHostsListObject {
 
   // remote
   url?: string
+  auth_username?: string
+  auth_password?: string
   last_refresh?: string
   last_refresh_ms?: number
   refresh_interval?: number // 单位：秒
